@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Emanuel Ratão</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Press+Start+2P&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Estilo para a fonte do título */
+        .font-title {
+            font-family: 'Press Start 2P', cursive;
+        }
+        /* Estilo para a nova fonte do menu */
+        .font-nav {
+            font-family: 'Anton', sans-serif;
+        }
+        /* Estilo para o corpo do texto */
+        body {
+            font-family: 'Roboto', sans-serif;
+            overflow: hidden; /* Previne scroll na página inteira */
+        }
+        /* Esconder a barra de rolagem */
+        ::-webkit-scrollbar {
+            display: none;
+        }
+        /* Animação de fade-in */
+        .content-section, #script-modal {
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        .content-section {
+            display: none;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .content-section.active {
+            display: block;
+        }
+        /* Transição para o menu lateral */
+        aside {
+            transition: transform 0.3s ease-in-out;
+        }
+        #flappy-canvas {
+            background-color: #70c5ce; /* Cor de céu do Flappy Bird */
+            cursor: pointer;
+            display: block; /* Garante que o canvas não tenha margens extras */
+        }
+    </style>
+</head>
+<body class="bg-gray-800 text-white">
+
+    <div class="relative min-h-screen md:flex">
+        <!-- Overlay para o menu mobile -->
+        <div id="mobile-menu-overlay" class="hidden md:hidden fixed inset-0 bg-black/50 z-30"></div>
+
+        <!-- Botão do Menu Mobile (Hambúrguer) -->
+        <button id="mobile-menu-button" class="md:hidden fixed top-4 left-4 z-50 p-2 rounded-md bg-blue-900/70 text-white">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+            </svg>
+        </button>
+
+        <!-- Barra Lateral -->
+        <aside id="sidebar" class="w-64 bg-blue-900 p-6 flex flex-col shadow-lg fixed inset-y-0 left-0 transform -translate-x-full md:relative md:translate-x-0 z-40">
+            <div class="text-center mb-10">
+                <h1 class="font-title text-xl text-cyan-400">EMANUEL RATÃO</h1>
+            </div>
+
+            <a href="https://www.youtube.com/@Emanuel_rat%C3%A3o" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-2 mb-10 text-lg text-gray-300 hover:text-white transition-colors duration-300">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-red-600" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
+                </svg>
+                <span>YOUTUBE</span>
+            </a>
+
+            <nav>
+                <ul class="space-y-4">
+                    <li><a href="#" class="nav-link font-nav uppercase text-xl tracking-wider text-gray-300 hover:text-cyan-400 transition-colors duration-300 block p-2 rounded-lg" data-target="sobre">Sobre mim</a></li>
+                    <li><a href="#" class="nav-link font-nav uppercase text-xl tracking-wider text-gray-300 hover:text-cyan-400 transition-colors duration-300 block p-2 rounded-lg" data-target="scripts">Scripts</a></li>
+                    <li><a href="#" class="nav-link font-nav uppercase text-xl tracking-wider text-gray-300 hover:text-cyan-400 transition-colors duration-300 block p-2 rounded-lg" data-target="executores">Executores</a></li>
+                    <li><a href="#" class="nav-link font-nav uppercase text-xl tracking-wider text-gray-300 hover:text-cyan-400 transition-colors duration-300 block p-2 rounded-lg" data-target="flappybird">Flappy Bird</a></li>
+                </ul>
+            </nav>
+            <div class="mt-auto text-center text-xs text-gray-500"><p>Feito com ❤️</p></div>
+        </aside>
+
+        <!-- Conteúdo Principal -->
+        <main class="flex-1 p-6 md:p-10">
+            <!-- Seção: Sobre mim -->
+            <div id="sobre" class="content-section"><div class="bg-gray-700 p-6 md:p-8 rounded-xl shadow-2xl max-w-2xl mx-auto"><h2 class="text-2xl md:text-3xl font-bold mb-4 text-cyan-400">Sobre mim</h2><p class="text-lg md:text-xl text-gray-300">Opa eu sou emanuel ratão, e eu quero te alegrar!</p></div></div>
+            <!-- Seção: Scripts -->
+            <div id="scripts" class="content-section"><div id="script-card" class="bg-gray-700 p-6 md:p-8 rounded-xl shadow-2xl max-w-3xl mx-auto text-center cursor-pointer hover:bg-gray-600 transition-colors duration-300"><h2 class="text-2xl md:text-3xl font-bold mb-2 text-cyan-400">RATO X BRAINROT</h2><p class="text-gray-400">SCRIPT MT OP ROUBE UM BRAINROT SEM KEY</p></div></div>
+            <!-- Seção: Executores -->
+            <div id="executores" class="content-section"><div class="bg-gray-700 p-6 md:p-8 rounded-xl shadow-2xl max-w-2xl mx-auto"><h2 class="text-2xl md:text-3xl font-bold mb-4 text-cyan-400">Executores</h2><p class="text-xl md:text-2xl text-gray-300">EM BREVE...</p></div></div>
+            <!-- Seção: Flappy Bird -->
+            <div id="flappybird" class="content-section"><div class="bg-gray-700 p-4 md:p-6 rounded-xl shadow-2xl max-w-3xl mx-auto text-center"><h2 class="text-2xl md:text-3xl font-bold mb-4 text-cyan-400 font-title">Flappy Ratão</h2><div class="bg-black rounded-lg overflow-hidden border-4 border-gray-600"><canvas id="flappy-canvas"></canvas></div></div></div>
+        </main>
+    </div>
+
+    <!-- Modal do Script em Tela Cheia -->
+    <div id="script-modal" class="hidden fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center p-4"><div class="bg-gray-800 p-6 md:p-8 rounded-xl shadow-2xl w-full max-w-4xl relative"><button id="close-script-button" class="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors duration-300"><svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h10a8 8 0 018 8v2M3 10l4-4m-4 4l4 4" /></svg></button><h2 class="text-2xl md:text-3xl font-bold mb-2 text-cyan-400 text-center">RATO X BRAINROT</h2><p class="text-gray-400 mb-6 text-center">SCRIPT MT OP ROUBE UM BRAINROT SEM KEY</p><div class="bg-gray-900 p-4 rounded-lg mb-4 max-h-60 md:max-h-96 overflow-y-auto"><code id="script-text" class="text-green-400 break-all">loadstring(game:HttpGet("https://pastefy.app/m78dfBWZ/raw"))()</code></div><button id="copy-button" class="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-4 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg">COPIAR SCRIPT</button></div></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const contentSections = document.querySelectorAll('.content-section');
+            const sidebar = document.getElementById('sidebar');
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+            const scriptCard = document.getElementById('script-card');
+            const scriptModal = document.getElementById('script-modal');
+            const closeScriptButton = document.getElementById('close-script-button');
+            const copyButton = document.getElementById('copy-button');
+            const scriptTextElement = document.getElementById('script-text');
+            const scriptText = scriptTextElement ? scriptTextElement.innerText : '';
+
+            let gameInstance = null;
+            let animationFrameId = null;
+
+            const closeMobileMenu = () => { sidebar.classList.add('-translate-x-full'); mobileMenuOverlay.classList.add('hidden'); };
+            const openMobileMenu = () => { sidebar.classList.remove('-translate-x-full'); mobileMenuOverlay.classList.remove('hidden'); };
+
+            mobileMenuButton.addEventListener('click', openMobileMenu);
+            mobileMenuOverlay.addEventListener('click', closeMobileMenu);
+
+            function switchTab(targetId) {
+                if (gameInstance) gameInstance.stop();
+                contentSections.forEach(section => section.classList.remove('active'));
+                const targetSection = document.getElementById(targetId);
+                if (targetSection) {
+                    targetSection.classList.add('active');
+                }
+                if (targetId === 'flappybird' && gameInstance) {
+                    gameInstance.init();
+                }
+            }
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    const targetId = this.getAttribute('data-target');
+                    switchTab(targetId);
+                    navLinks.forEach(l => l.classList.remove('bg-blue-800', 'text-white'));
+                    this.classList.add('bg-blue-800', 'text-white');
+                    if (window.innerWidth < 768) closeMobileMenu();
+                });
+            });
+
+            if (scriptCard) scriptCard.addEventListener('click', () => scriptModal.classList.remove('hidden'));
+            if (closeScriptButton) closeScriptButton.addEventListener('click', () => scriptModal.classList.add('hidden'));
+
+            if (copyButton && scriptText) {
+                copyButton.addEventListener('click', function() {
+                    const tempTextArea = document.createElement('textarea');
+                    tempTextArea.value = scriptText;
+                    document.body.appendChild(tempTextArea);
+                    tempTextArea.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(tempTextArea);
+                    const originalText = this.innerText;
+                    this.innerText = 'COPIADO!'; this.disabled = true;
+                    this.classList.replace('bg-green-500', 'bg-gray-500');
+                    this.classList.replace('hover:bg-green-600', 'cursor-not-allowed');
+                    setTimeout(() => {
+                        this.innerText = originalText; this.disabled = false;
+                        this.classList.replace('bg-gray-500', 'bg-green-500');
+                        this.classList.replace('cursor-not-allowed', 'hover:bg-green-600');
+                    }, 2000);
+                });
+            }
+
+            const canvas = document.getElementById('flappy-canvas');
+            if (canvas) {
+                const ctx = canvas.getContext('2d');
+                class FlappyBirdGame {
+                    constructor(canvas, ctx) {
+                        this.canvas = canvas;
+                        this.ctx = ctx;
+                        this.fontName = "'Press Start 2P'";
+                        this.isInitialized = false;
+                        
+                        this.addInputListeners();
+                        window.addEventListener('resize', () => {
+                            if (this.isInitialized) this.init();
+                        });
+                    }
+                    init() {
+                        this.stop();
+                        this.resizeCanvas();
+                        this.reset();
+                        this.isInitialized = true;
+                        this.start();
+                    }
+                    resizeCanvas() {
+                        const parent = this.canvas.parentElement;
+                        if (parent.clientWidth > 0) {
+                            this.canvas.width = parent.clientWidth;
+                            this.canvas.height = parent.clientWidth * (9 / 16);
+                        }
+                    }
+                    reset() {
+                        this.state = 'start';
+                        this.bird = {
+                            x: this.canvas.width / 3,
+                            y: this.canvas.height / 2,
+                            radius: this.canvas.height / 30,
+                            velocity: 0,
+                            gravity: this.canvas.height / 1800,
+                            jump: -this.canvas.height / 90
+                        };
+                        this.pipes = [];
+                        this.pipeConfig = { width: this.canvas.width / 8, gap: this.bird.radius * 7, spawnRate: 120, speed: this.canvas.width / 200 };
+                        this.score = 0;
+                        this.highScore = localStorage.getItem('flappyRataoHighScore') || 0;
+                        this.frameCount = 0;
+                    }
+                    addInputListeners() {
+                        const jumpAction = (e) => {
+                            e.preventDefault();
+                            if (!this.isInitialized) return;
+                            if (this.state === 'start') this.state = 'playing';
+                            if (this.state === 'playing') this.bird.velocity = this.bird.jump;
+                            if (this.state === 'gameOver') { this.init(); }
+                        };
+                        this.canvas.addEventListener('mousedown', jumpAction);
+                        this.canvas.addEventListener('touchstart', jumpAction);
+                        window.addEventListener('keydown', (e) => { if (e.code === 'Space') jumpAction(e); });
+                    }
+                    update() {
+                        if (this.state !== 'playing') return;
+                        this.bird.velocity += this.bird.gravity;
+                        this.bird.y += this.bird.velocity;
+                        this.frameCount++;
+                        if (this.frameCount % this.pipeConfig.spawnRate === 0) {
+                            const gapY = Math.random() * (this.canvas.height - this.pipeConfig.gap * 2.5) + this.pipeConfig.gap * 1.25;
+                            this.pipes.push({ x: this.canvas.width, y: gapY, scored: false });
+                        }
+                        this.pipes.forEach(pipe => pipe.x -= this.pipeConfig.speed);
+                        this.pipes = this.pipes.filter(pipe => pipe.x + this.pipeConfig.width > 0);
+                        this.checkCollisions();
+                    }
+                    checkCollisions() {
+                        if (this.bird.y + this.bird.radius > this.canvas.height || this.bird.y - this.bird.radius < 0) {
+                            this.gameOver();
+                        }
+                        this.pipes.forEach(pipe => {
+                            const birdLeft = this.bird.x - this.bird.radius;
+                            const birdRight = this.bird.x + this.bird.radius;
+                            const birdTop = this.bird.y - this.bird.radius;
+                            const birdBottom = this.bird.y + this.bird.radius;
+                            const pipeLeft = pipe.x;
+                            const pipeRight = pipe.x + this.pipeConfig.width;
+                            const pipeTop = pipe.y - this.pipeConfig.gap / 2;
+                            const pipeBottom = pipe.y + this.pipeConfig.gap / 2;
+                            if (birdRight > pipeLeft && birdLeft < pipeRight && (birdTop < pipeTop || birdBottom > pipeBottom)) {
+                                this.gameOver();
+                            }
+                            if (pipe.x + this.pipeConfig.width < this.bird.x && !pipe.scored) {
+                                this.score++;
+                                pipe.scored = true;
+                            }
+                        });
+                    }
+                    gameOver() {
+                        this.state = 'gameOver';
+                        if (this.score > this.highScore) {
+                            this.highScore = this.score;
+                            localStorage.setItem('flappyRataoHighScore', this.highScore);
+                        }
+                    }
+                    draw() {
+                        this.ctx.fillStyle = '#70c5ce'; this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+                        this.ctx.fillStyle = '#73bf2e'; this.ctx.strokeStyle = '#558021'; this.ctx.lineWidth = 4;
+                        this.pipes.forEach(pipe => {
+                            const topPipeHeight = pipe.y - this.pipeConfig.gap / 2;
+                            const bottomPipeY = pipe.y + this.pipeConfig.gap / 2;
+                            this.ctx.fillRect(pipe.x, 0, this.pipeConfig.width, topPipeHeight); this.ctx.strokeRect(pipe.x, 0, this.pipeConfig.width, topPipeHeight);
+                            this.ctx.fillRect(pipe.x, bottomPipeY, this.pipeConfig.width, this.canvas.height - bottomPipeY); this.ctx.strokeRect(pipe.x, bottomPipeY, this.pipeConfig.width, this.canvas.height - bottomPipeY);
+                        });
+                        
+                        // Desenha o pássaro (círculo)
+                        this.ctx.fillStyle = '#f0db4f';
+                        this.ctx.beginPath();
+                        this.ctx.arc(this.bird.x, this.bird.y, this.bird.radius, 0, Math.PI * 2);
+                        this.ctx.fill();
+                        this.ctx.strokeStyle = 'black';
+                        this.ctx.stroke();
+
+                        this.ctx.fillStyle = 'white'; this.ctx.strokeStyle = 'black'; this.ctx.lineWidth = 5; this.ctx.font = `bold ${this.canvas.width / 15}px ${this.fontName}`; this.ctx.textAlign = 'center';
+                        this.ctx.strokeText(this.score, this.canvas.width / 2, this.canvas.height / 6);
+                        this.ctx.fillText(this.score, this.canvas.width / 2, this.canvas.height / 6);
+                        
+                        if (this.state === 'start') { this.drawText('CLIQUE OU ESPAÇO', this.canvas.width / 2, this.canvas.height / 2 - 20, this.canvas.width / 25); this.drawText('PARA JOGAR', this.canvas.width / 2, this.canvas.height / 2 + 20, this.canvas.width / 25); }
+                        if (this.state === 'gameOver') { this.drawText('GAME OVER', this.canvas.width / 2, this.canvas.height / 2 - 50, this.canvas.width / 18); this.drawText(`SCORE: ${this.score}`, this.canvas.width / 2, this.canvas.height / 2, this.canvas.width / 25); this.drawText(`MELHOR: ${this.highScore}`, this.canvas.width / 2, this.canvas.height / 2 + 40, this.canvas.width / 30); this.drawText('Clique para tentar de novo', this.canvas.width / 2, this.canvas.height / 2 + 80, this.canvas.width / 40); }
+                    }
+                    drawText(text, x, y, size) { this.ctx.font = `bold ${size}px ${this.fontName}`; this.ctx.strokeText(text, x, y); this.ctx.fillText(text, x, y); }
+                    loop() { this.update(); this.draw(); animationFrameId = requestAnimationFrame(() => this.loop()); }
+                    start() { if (!animationFrameId) this.loop(); }
+                    stop() { if (animationFrameId) { cancelAnimationFrame(animationFrameId); animationFrameId = null; } }
+                }
+                gameInstance = new FlappyBirdGame(canvas, ctx);
+            }
+
+            const firstLink = document.querySelector('.nav-link');
+            if(firstLink){
+                firstLink.classList.add('bg-blue-800', 'text-white');
+                switchTab(firstLink.getAttribute('data-target'));
+            }
+        });
+    </script>
+</body>
+</html>
